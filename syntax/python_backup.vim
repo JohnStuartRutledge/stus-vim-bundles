@@ -77,27 +77,17 @@ syn keyword pythonOperator	and in is not or
 syn keyword pythonException	except finally raise try
 syn keyword pythonInclude	from import
 
-" Comparison Operators
-" <\=|>\=|\=\=|<|>|\!\=
-"
-" Assignment Operators
-" \+\=|-\=|\*\=|/\=|//\=|%\=|&\=|\|\=|\^\=|>>\=|<<\=|\*\*\=
-"
-" Arithmatic Operators
-" \+|\-|\*|\*\*|/|//|%|<<|>>|&|\||\^|~
-"
-
 " NOTE: @pfdevilliers added this
 " I copied this directly from the ruby.vim syntax file inorder to highlight all
 " the operators. This must offcourse be revised to only contain the operators
 " that exists in python.
-syn match pythonExtraOperator "\%([~!^&|*/%+-]\|\%(class\s*\)\@<!<<\|<=>\|<=\|\%(<\|\<class\s\+\u\w*\s*\)\@<!<[^<]\@=\|===\|==\|=\~\|>>\|>=\|=\@<!>\|\*\*\|\.\.\.\|\.\.\|::\|=\)"
-syn match pythonExtraPseudoOperator "\%(-=\|/=\|\*\*=\|\*=\|&&=\|&=\|&&\|||=\||=\|||\|%=\|+=\|!\~\|!=\)"
+syn match  pythonExtraOperator	 "\%([~!^&|*/%+-]\|\%(class\s*\)\@<!<<\|<=>\|<=\|\%(<\|\<class\s\+\u\w*\s*\)\@<!<[^<]\@=\|===\|==\|=\~\|>>\|>=\|=\@<!>\|\*\*\|\.\.\.\|\.\.\|::\|=\)"
+syn match  pythonExtraPseudoOperator  "\%(-=\|/=\|\*\*=\|\*=\|&&=\|&=\|&&\|||=\||=\|||\|%=\|+=\|!\~\|!=\)"
 
 
 "syn region pythonClass start="(" end=")" contains=pythonParameters skipwhite transparent
 " Decorators (new in Python 2.4)
-syn match pythonDecorator "@" display nextgroup=pythonFunction skipwhite
+syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
 " The zero-length non-grouping match before the function name is
 " extremely important in pythonFunction.  Without it, everything is
 " interpreted as a function inside the contained environment of
@@ -110,16 +100,17 @@ syn match pythonDecorator "@" display nextgroup=pythonFunction skipwhite
 " It is really a hack job ignoring best practices. I royally screwed up the
 " regular expressions which led to the definition of the pythonBrackets. 
 " This should be improved and simplified.
-syn match  pythonFunction
+syn match   pythonFunction
       \ "\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*" contained nextgroup=pythonVars
 syn region pythonVars start="(" end=")" contained contains=pythonParameters transparent keepend
-syn match  pythonParameters "[^,]*"     contained contains=pythonParam,pythonBrackets skipwhite
-syn match  pythonParam "=[^,]*"         contained contains=pythonExtraOperator,pythonStatement,pythonNumber,pythonString skipwhite
-syn match  pythonBrackets "[(|)]"       contained skipwhite
+syn match pythonParameters "[^,]*" contained contains=pythonParam,pythonBrackets skipwhite
+syn match pythonParam "=[^,]*" contained contains=pythonExtraOperator,pythonStatement,pythonNumber,pythonString skipwhite
+syn match pythonBrackets "[(|)]" contained skipwhite
 
 " NOTE: @pfdevilliers added this
 " The same as the previous definitions but for the python class.
-syn match pythonClass "\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*" contained nextgroup=pythonClassVars
+syn match   pythonClass
+      \ "\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*" contained nextgroup=pythonClassVars
 syn region pythonClassVars start="(" end=")" contained contains=pythonClassParameters transparent keepend
 syn match pythonClassParameters "[^,]*" contained contains=pythonBrackets skipwhite
 

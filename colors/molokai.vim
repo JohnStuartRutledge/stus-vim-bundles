@@ -237,6 +237,6 @@ if &t_Co > 255
    " change color of text that gets highlighted for being
    " out of bounds (aka breaks the 80 character limit
    hi OutOfBounds     ctermfg=39                cterm=bold
-   
+
 
 end " }}}
